@@ -5,4 +5,4 @@ true,3,cooperative-works,Cooperative Works,Policy Analysis | Economic Developmen
 true,4,pothole-politics,Getting filled in on Mayor Mamdani’s “Pothole Politics”,Data Analysis | Infrastructure,🕳️ 🚧,A data-led look at New York City potholes and what we can learn from the Mamdani administration’s first four “blitzes.”,See observable notebook,https://observablehq.com/@mpkhinda/nyc-pothole-politics,pothole_politics.jpg,
 true,5,usascii,USASCII,Information Design | Land Cover,🗺️ 🔢,An ASCII visualization of U.S. land cover at a 30 kilometer resolution from 1985 – 2024.,See github repository,https://github.com/mpkhinda/USASCII,usascii.gif,
 true,6,nyc-opendataviz,NYC Open Data Visualization,Information Design | Open Data,🏙️ 🔍,Self-directed exploratory visualizations of New York City's Open Data from housing to urban heat and everything in between.,See observable collection,https://observablehq.com/collection/@mpkhinda/nyc-data-visualizations,nyc_opendataviz.jpg,
-false,7,,,,,,,,,
+false,7,prospect-park-trees,Prospect Park Fall Foliage Map,Information Design | Parks & Recreation,🍁 📡,,,,,
