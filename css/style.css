@@ -152,11 +152,10 @@ button {
     align-items: center;
     justify-content: center;
     transition: background 160ms ease, transform 160ms ease;
-    opacity: 0.35;
+    opacity: 0.87;
 }
 .social:hover {
     background: #e6e6e6;
-    opacity: 0.87;
 }
 .social:active {
     transform: scale(0.96);
