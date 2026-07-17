@@ -9,3 +9,5 @@ build/
 .idea/
 *.swp
 Thumbs.db
+css/style_old.css
+js/main_old.js
