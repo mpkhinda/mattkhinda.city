@@ -89,6 +89,7 @@ button {
 .header__info {
     grid-column: 4 / span 5;
     max-width: none;
+    margin-top: 2px;
 }
 .header__socials {
     grid-column: 11 / span 2;
