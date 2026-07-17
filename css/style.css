@@ -219,6 +219,7 @@ button {
     .header__name {
         grid-area: name;
         font-size: var(--mobile-body);
+        text-decoration: underline 1px;
     }
 
     .header__socials {
