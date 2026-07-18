@@ -85,9 +85,10 @@ button {
 .header__bio {
     grid-column: 1 / span 3;
     max-width: none;
+    padding-right: 60px;
 }
 .header__info {
-    grid-column: 4 / span 5;
+    grid-column: 4 / span 3;
     max-width: none;
     margin-top: 2px;
 }
@@ -179,13 +180,13 @@ button {
 }
 
 /* ---------- tablet ---------- */
-@media (max-width: 1200px) and (min-width: 721px) {
+@media (max-width: 1200px) and (min-width: 1101px) {
     .work__img {
         grid-column: 1 / span 11;
     }
 }
 
-@media (max-width: 900px) and (min-width: 721px) {
+@media (max-width: 1100px) and (min-width: 721px) {
     .header__bio {
         grid-column: 1 / span 4;
         max-width: none;
@@ -207,38 +208,35 @@ button {
     }
 
     .header {
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-            "name socials"
-            "bio  socials";
-        column-gap: 16px;
-        row-gap: 4px;
+        position: relative;
+        display: block;
         margin-bottom: 20px;
-        align-items: start;
     }
     .header__name {
-        grid-area: name;
         font-size: var(--mobile-body);
         text-decoration: underline;
-    }
-
-    .header__socials {
-        grid-area: socials;
-        align-self: start;
+        padding-right: 48px;
     }
     .header__bio {
-        grid-area: bio;
         font-size: var(--mobile-body);
         max-width: none;
+        margin-top: 4px;
+        padding-right: 48px;
+    }
+    .header__bio .bio {
+        margin-bottom: 0;
     }
     .header__info {
-        grid-area: bio;
         font-size: var(--mobile-body);
         max-width: none;
-        margin-top: 44px;
+        margin-top: 4px;
+        padding-right: 48px;
     }
 
     .header__socials {
+        position: absolute;
+        top: 0;
+        right: 0;
         display: grid;
         gap: 8px;
     }
