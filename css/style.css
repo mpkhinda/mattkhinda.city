@@ -171,7 +171,7 @@ button {
 /* ---------- main section ---------- */
 .main {
     grid-column: 1 / -1;
-    min-height: 0;
+    min-height: 400px;
     display: grid;
     grid-template-columns: subgrid;
     align-items: center;
