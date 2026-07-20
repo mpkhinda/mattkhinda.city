@@ -217,7 +217,7 @@ button {
     .header {
         position: relative;
         display: block;
-        margin-bottom: 35px;
+        margin-bottom: 30px;
     }
     .header__name {
         font-size: var(--mobile-body);
@@ -236,7 +236,7 @@ button {
     .header__info {
         font-size: var(--mobile-body);
         max-width: none;
-        margin-top: 4px;
+        margin-top: 12px;
         padding-right: 48px;
     }
 
