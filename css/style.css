@@ -187,6 +187,12 @@ button {
 }
 
 /* ---------- tablet ---------- */
+@media (max-width: 1300px) and (min-width: 1201px) {
+    .work__img {
+        grid-column: 1 / 10;
+    }
+}
+
 @media (max-width: 1200px) and (min-width: 1101px) {
     .work__img {
         grid-column: 1 / 11;
