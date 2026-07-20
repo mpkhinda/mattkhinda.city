@@ -95,7 +95,7 @@ button {
     margin-top: 2px;
 }
 .header__socials {
-    grid-column: 11 / span 2;
+    grid-column: 7 / span 2;
     justify-self: end;
 }
 
@@ -188,18 +188,27 @@ button {
 
 /* ---------- tablet ---------- */
 @media (max-width: 1300px) and (min-width: 1201px) {
+    .header__socials{
+        grid-column: 8 / span 2;
+    }
     .work__img {
         grid-column: 1 / 10;
     }
 }
 
 @media (max-width: 1200px) and (min-width: 1101px) {
+    .header__socials{
+        grid-column: 9 / span 2;
+    }
     .work__img {
         grid-column: 1 / 11;
     }
 }
 
 @media (max-width: 1100px) and (min-width: 716px) {
+    .header__socials{
+        grid-column: 11 / span 2;
+    }
     .work__img {
         grid-column: 1 / -1;
     }
