@@ -104,7 +104,6 @@ button {
     font-weight: 700;
     font-size: var(--desktop-body);
     margin: 0;
-    text-decoration: underline 1px;
     white-space: nowrap;
     padding-top: 2px;
 }
@@ -236,7 +235,6 @@ button {
     }
     .header__name {
         font-size: var(--mobile-body);
-        text-decoration: underline;
         padding-right: 48px;
     }
     .header__bio {
