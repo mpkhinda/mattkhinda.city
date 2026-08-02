@@ -93,6 +93,7 @@ button {
     grid-column: 4 / span 3;
     max-width: none;
     margin-top: 2px;
+    padding-right: 20px;
 }
 .header__socials {
     grid-column: 7 / span 2;
@@ -202,6 +203,9 @@ button {
     .work__img {
         grid-column: 1 / 11;
     }
+    .header__info {
+        padding-right: 80px;
+    }
 }
 
 @media (max-width: 1100px) and (min-width: 716px) {
@@ -218,6 +222,7 @@ button {
     .header__info {
         grid-column: 5 / span 5;
         max-width: none;
+        padding-right: 80px;
     }
 }
 
