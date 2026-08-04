@@ -173,7 +173,7 @@ button {
     display: grid;
     grid-template-columns: subgrid;
     column-gap: var(--gutter);
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .projects {
@@ -323,7 +323,7 @@ button {
     }
 
     .main {
-        margin-bottom: 0px;
+        margin-bottom: 50px;
     }
 
     .project {
