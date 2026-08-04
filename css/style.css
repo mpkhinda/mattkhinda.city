@@ -16,6 +16,7 @@
     --page-pad-y: 40px;
     --gutter: clamp(16px, 2vw, 32px);
     --row-gap: 25px;
+    --project-gap: 48px;
 
     html {
         color-scheme: light;
@@ -65,10 +66,8 @@ button {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--page-pad-y) var(--page-margin);
-    height: 100dvh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto 1fr;
     column-gap: var(--gutter);
     position: relative;
 }
@@ -79,24 +78,24 @@ button {
     display: grid;
     grid-template-columns: subgrid;
     column-gap: var(--gutter);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .header__name {
     grid-column: 1 / span 2;
 }
 .header__bio {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 4;
     max-width: none;
-    padding-right: 60px;
+    padding-right: 80px;
 }
 .header__info {
-    grid-column: 4 / span 3;
+    grid-column: 7 / span 3;
     max-width: none;
     margin-top: 2px;
     padding-right: 20px;
 }
 .header__socials {
-    grid-column: 7 / span 2;
+    grid-column: 11 / -1;
     justify-self: end;
 }
 
@@ -142,7 +141,7 @@ button {
 .header__socials {
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: start;
     padding-top: 2px;
 }
 
@@ -177,47 +176,103 @@ button {
     margin-bottom: 10px;
 }
 
-.work__img {
-    grid-column: 1 / 9;
+.projects {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    column-gap: var(--gutter);
+    row-gap: var(--project-gap);
 }
 
-.caption {
-    grid-column: 1 / 9;
-    padding-top: 10px;
+.project {
+    grid-column: span 6;
+}
+
+.project__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--color-rule);
+}
+
+.project__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 700ms ease-in-out;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.project__slide.is-active {
+    opacity: 1;
+}
+
+.project__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gutter);
+    padding-top: 15px;
+}
+
+.project__title {
+    font-weight: 700;
+    color: var(--color-ink);
+}
+
+.project__credit {
+    font-style: italic;
+}
+
+.project__dots {
+    display: flex;
+    gap: 0px;
+    flex-shrink: 0;
+}
+
+.project__dot {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.project__dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    opacity: 15%;
+    transition: background 150ms ease;
+}
+
+.project__dot.is-active::before {
+    opacity: 100%;
 }
 
 /* ---------- tablet ---------- */
-@media (max-width: 1300px) and (min-width: 1201px) {
-    .header__socials {
-        grid-column: 8 / span 2;
-    }
-    .work__img {
-        grid-column: 1 / 10;
-    }
-}
 
-@media (max-width: 1200px) and (min-width: 1101px) {
-    .header__socials {
-        grid-column: 9 / span 2;
-    }
-    .work__img {
-        grid-column: 1 / 11;
-    }
+@media (max-width: 1200px) and (min-width: 1086px) {
     .header__info {
-        padding-right: 80px;
+        padding-right: 10px;
     }
 }
 
-@media (max-width: 1100px) and (min-width: 716px) {
-    .header__socials {
-        grid-column: 11 / span 2;
-    }
-    .work__img {
+@media (max-width: 1085px) and (min-width: 716px) {
+    .project {
         grid-column: 1 / -1;
     }
     .header__bio {
         grid-column: 1 / span 4;
         max-width: none;
+        padding-right: 40px;
     }
     .header__info {
         grid-column: 5 / span 5;
@@ -231,6 +286,7 @@ button {
     :root {
         --page-pad-y: 28px;
         --row-gap: 18px;
+        --project-gap: 32px;
     }
 
     .header {
@@ -244,18 +300,18 @@ button {
     }
     .header__bio {
         font-size: var(--mobile-body);
-        max-width: none;
+        max-width: 400px;
         margin-top: 4px;
-        padding-right: 48px;
+        padding-right: 80px;
     }
     .header__bio .bio {
         margin-bottom: 0;
     }
     .header__info {
         font-size: var(--mobile-body);
-        max-width: none;
+        max-width: 400px;
         margin-top: 12px;
-        padding-right: 48px;
+        padding-right: 80px;
     }
 
     .header__socials {
@@ -270,7 +326,7 @@ button {
         margin-bottom: 0px;
     }
 
-    .work__img {
+    .project {
         grid-column: 1 / -1;
     }
 }
