@@ -184,6 +184,14 @@
 			restartAutoplay();
 		});
 
+		media.addEventListener("mousemove", (event) => {
+			document.body.style.cursor = isLeftHalf(event) ? "w-resize" : "e-resize";
+		});
+
+		media.addEventListener("mouseleave", () => {
+			document.body.style.cursor = "auto";
+		});
+
 		restartAutoplay();
 
 		return {
