@@ -1,8 +1,7 @@
 :root {
     --font-sans: "Public Sans", system-ui, sans-serif;
 
-    --desktop-body: 14px;
-    --mobile-body: 13px;
+    --body: 14px;
 
     --color-bg: #ffffff;
     --color-ink: #202020;
@@ -15,12 +14,7 @@
     --page-margin: clamp(20px, 5vw, 60px);
     --page-pad-y: 40px;
     --gutter: clamp(16px, 2vw, 32px);
-    --row-gap: 25px;
     --project-gap: 48px;
-
-    html {
-        color-scheme: light;
-    }
 }
 /* ---------- reset ---------- */
 *, *::before, *::after {
@@ -102,7 +96,7 @@ button {
 .header__name {
     font-family: var(--font-sans);
     font-weight: 700;
-    font-size: var(--desktop-body);
+    font-size: var(--body);
     margin: 0;
     white-space: nowrap;
     padding-top: 2px;
@@ -116,7 +110,7 @@ button {
 .bio {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: var(--desktop-body);
+    font-size: var(--body);
     line-height: 1.45;
     margin: 0 0 6px 0;
     color: var(--color-ink);
@@ -125,7 +119,7 @@ button {
 .info {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: var(--desktop-body);
+    font-size: var(--body);
     line-height: 1.45;
     margin: 0 0 6px 0;
     color: var(--color-muted);
@@ -250,7 +244,7 @@ button {
     border-radius: 50%;
     background: var(--color-ink);
     opacity: 15%;
-    transition: background 150ms ease;
+    transition: opacity 150ms ease;
 }
 
 .project__dot.is-active::before {
@@ -285,7 +279,6 @@ button {
 @media (max-width: 715px) {
     :root {
         --page-pad-y: 28px;
-        --row-gap: 18px;
         --project-gap: 32px;
     }
 
@@ -295,11 +288,9 @@ button {
         margin-bottom: 30px;
     }
     .header__name {
-        font-size: var(--mobile-body);
         padding-right: 48px;
     }
     .header__bio {
-        font-size: var(--mobile-body);
         max-width: 400px;
         margin-top: 4px;
         padding-right: 80px;
@@ -308,7 +299,6 @@ button {
         margin-bottom: 0;
     }
     .header__info {
-        font-size: var(--mobile-body);
         max-width: 400px;
         margin-top: 12px;
         padding-right: 80px;

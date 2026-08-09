@@ -2,7 +2,6 @@
 	"use strict";
 
 	const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "webp"];
-	const MAX_IMAGE_INDEX = 20;
 	const PRIORITY_SCAN_LIMIT = 4;
 	const AUTOPLAY_INTERVAL_MS = 4000;
 	const AUTOPLAY_STAGGER_MIN_MS = 0;
@@ -117,17 +116,17 @@
 			.map((i) => byIndex.get(i));
 	}
 
-	// Small, fast scan of just the first few indices so every project can
-	// show its lead image(s) quickly, before the full carousel is
-	// discovered in the background.
+	// Fast scan of the first few indices so tiles can render before the full scan finishes
 	async function discoverLeadImages(folder) {
 		if (!folder) return [];
-		return resolveHits(candidatesForRange(folder, 0, PRIORITY_SCAN_LIMIT - 1));
+		return resolveHits(
+			candidatesForRange(folder, 0, PRIORITY_SCAN_LIMIT - 1),
+		);
 	}
 
-	async function discoverImages(folder) {
+	async function discoverImages(folder, numImages) {
 		if (!folder) return [];
-		return resolveHits(candidatesForRange(folder, 0, MAX_IMAGE_INDEX));
+		return resolveHits(candidatesForRange(folder, 0, Number(numImages)));
 	}
 
 	// ---------- carousel behavior ----------
@@ -162,7 +161,8 @@
 		function scheduleAutoplay() {
 			const delay = AUTOPLAY_INTERVAL_MS +
 				AUTOPLAY_STAGGER_MIN_MS +
-				Math.random() * (AUTOPLAY_STAGGER_MAX_MS - AUTOPLAY_STAGGER_MIN_MS);
+				Math.random() *
+					(AUTOPLAY_STAGGER_MAX_MS - AUTOPLAY_STAGGER_MIN_MS);
 			timer = setTimeout(() => {
 				goTo(current + 1);
 				scheduleAutoplay();
@@ -185,7 +185,9 @@
 		});
 
 		media.addEventListener("mousemove", (event) => {
-			document.body.style.cursor = isLeftHalf(event) ? "w-resize" : "e-resize";
+			document.body.style.cursor = isLeftHalf(event)
+				? "w-resize"
+				: "e-resize";
 		});
 
 		media.addEventListener("mouseleave", () => {
@@ -208,7 +210,8 @@
 		for (let i = 0; i < count; i++) {
 			const dot = document.createElement("button");
 			dot.type = "button";
-			dot.className = "project__dot" + (i === activeIndex ? " is-active" : "");
+			dot.className = "project__dot" +
+				(i === activeIndex ? " is-active" : "");
 			dot.setAttribute("aria-label", `Show image ${i + 1} of ${count}`);
 			dot.addEventListener("click", () => onSelect(i));
 			dotsEl.appendChild(dot);
@@ -281,10 +284,7 @@
 		return article;
 	}
 
-	// Fills in the rest of a project's carousel once the full scan
-	// resolves, reusing the lead slide already on screen from buildProject
-	// (or creating the media block from scratch if the priority scan
-	// hadn't found anything yet).
+	// Fills in the rest of a project's carousel once the full scan resolves
 	function completeCarousel(article, row, images) {
 		if (!images.length) return;
 
@@ -298,7 +298,9 @@
 
 		const alt = row.alt_text || row.name || "";
 		const existingSrcs = new Set(
-			[...media.querySelectorAll(".project__slide")].map((img) => img.src),
+			[...media.querySelectorAll(".project__slide")].map((img) =>
+				img.src
+			),
 		);
 
 		images.forEach((src) => {
@@ -322,7 +324,12 @@
 				},
 			});
 			if (dotsEl) {
-				renderDots(dotsEl, slides.length, 0, (index) => carousel.goTo(index));
+				renderDots(
+					dotsEl,
+					slides.length,
+					0,
+					(index) => carousel.goTo(index),
+				);
 			}
 		}
 	}
@@ -348,9 +355,7 @@
 			.filter((r) => isTruthy(r.publish))
 			.sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
 
-		// Phase 1: quickly find each project's lead image and render every
-		// tile with just that, so the whole grid appears fast instead of
-		// waiting on the full per-project image scan.
+		// Render every tile with just its lead image so the grid appears fast
 		const tiles = await Promise.all(
 			rows.map(async (row) => {
 				const leadImages = await discoverLeadImages(row.folder);
@@ -362,11 +367,10 @@
 		tiles.forEach(({ article }) => frag.appendChild(article));
 		grid.appendChild(frag);
 
-		// Phase 2: fill in the rest of each carousel in the background,
-		// independently per project.
+		// Fill in the rest of each carousel in the background per project
 		tiles.forEach(({ row, article }) => {
 			if (!row.folder) return;
-			discoverImages(row.folder).then((images) =>
+			discoverImages(row.folder, row.num_images).then((images) =>
 				completeCarousel(article, row, images)
 			);
 		});
