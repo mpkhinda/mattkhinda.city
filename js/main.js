@@ -126,7 +126,7 @@
 
 	async function discoverImages(folder, numImages) {
 		if (!folder) return [];
-		return resolveHits(candidatesForRange(folder, 0, Number(numImages)));
+		return resolveHits(candidatesForRange(folder, 1, Number(numImages)));
 	}
 
 	// ---------- carousel behavior ----------
