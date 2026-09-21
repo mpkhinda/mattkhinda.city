@@ -134,7 +134,7 @@ button {
 
 .header__socials {
     display: flex;
-    gap: 8px;
+    gap: 5px;
     align-items: start;
     padding-top: 2px;
 }
@@ -309,7 +309,7 @@ button {
         top: 0;
         right: 0;
         display: grid;
-        gap: 8px;
+        gap: 3px;
     }
 
     .main {
